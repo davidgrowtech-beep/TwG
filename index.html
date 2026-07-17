@@ -121,38 +121,36 @@ fbq('track', 'PageView');
     </section>
 
 <script>
-    // Countdown Timer and Event Tracking Logic
     let time = 30;
-    let counter = document.getElementById("count");
-
-    // Telegram link
+    const counter = document.getElementById("count");
     const TELEGRAM_URL = "https://telegram.me/+YKigeOtzmX1kYTM1"; 
 
-    // Handle button click with tracking
-    document.getElementById("telegramBtn").addEventListener("click", function(e){
+    // Built missing function to handle inline tracking actions 
+    function trackAndRedirect(e) {
         e.preventDefault();
-        const telegramLink = this.href;
+        const targetUrl = e.currentTarget.href || TELEGRAM_URL;
 
-        // Meta Pixel tracking: Subscribe event
-        if (typeof fbq !== 'undefined') {
-            fbq('track','Lead',{
-                content_name:'Telegram Community',
-                button_click:true
-            },{
-                eventID:'telegram_subscribe_'+Date.now()
+if (typeof fbq !== 'undefined') { 
+    fbq('track', 'Lead', { 
+        content_name: 'Telegram Community', 
+        button_click: true,
+        value: 0.00,
+        currency: 'INR'
+    });
+}
+                eventID: 'telegram_subscribe_' + Date.now()
             });
         } else {
             console.warn("fbq is not defined. Tracking skipped.");
         }
 
-        // Delay redirect slightly for tracking to fire
-        setTimeout(()=>{
-            window.location.href = telegramLink;
-        }, 1000);
-    });
+        setTimeout(() => {
+            window.location.href = targetUrl;
+        }, 500);
+    }
 
-    // Automatic countdown and redirect
-    const countdown = setInterval(()=>{
+    // Handled automatic countdown securely
+    const countdown = setInterval(() => {
         time--;
         if (counter) {
             counter.innerText = time;
@@ -164,7 +162,7 @@ fbq('track', 'PageView');
         }
     }, 1000);
 </script>
-
+    
     <div><i class="fas fa-star" style="color:#ff000d;"></i> <div style="text-align:center; margin:14px 0 10px 0; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);">
   <p style="font-weight:bold; margin-bottom:6px; font-size:11px; color:#94a3b8;">Advertised by : SRS Marketing Agency</p>
   <a href="https://t.me/srsagency" target="_blank" style="
