@@ -157,9 +157,9 @@ if (typeof fbq !== 'undefined') {
         }
 
         if (time <= 0) {
-            clearInterval(countdown);
-            window.location.href = TELEGRAM_URL;
-        }
+    clearInterval(countdown);
+    trackAndRedirect({ preventDefault(){}, currentTarget: { href: TELEGRAM_URL } });
+}
     }, 1000);
 </script>
     
