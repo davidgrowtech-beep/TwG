@@ -122,13 +122,13 @@ fbq('track', 'PageView');
 
     <!-- COUNTDOWN TIMER -->
     <div class="timer" style="text-align:center; margin-top:10px; font-size:12px; color:#94a3b8;">
-        ⏳ <span id="count">Will be redirect in 30 seconds ....</span>
+        ⏳ <span id="count">Will be redirect in 10 seconds ....</span>
     </div>
 
     <script>
         // Countdown logic (updates the text every second; does not auto-redirect on its own)
         (function () {
-            let secondsLeft = 30;
+            let secondsLeft = 10;
             const countEl = document.getElementById("count");
 
             const interval = setInterval(() => {
